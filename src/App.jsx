@@ -504,6 +504,7 @@ function App() {
                     </span>
                   ))}
                 </div>
+                {project.note ? <p className="note">{project.note}</p> : null}
                 <div className="project-links">
                   {project.links.map((link) => (
                     <ProjectAction
@@ -525,7 +526,6 @@ function App() {
                     />
                   ) : null}
                 </div>
-                {project.note ? <p className="note">{project.note}</p> : null}
               </article>
             ))}
           </div>

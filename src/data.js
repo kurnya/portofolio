@@ -121,6 +121,44 @@ export const fallbackPortfolioData = {
       ],
     },
     {
+      title: "Bot WhatsApp Grup Komunitas",
+      eyebrow: "Chat Automation",
+      status: "Aktif",
+      highlight: "Bot WhatsApp khusus grup komunitas dengan command yang bisa diatur per grup.",
+      description:
+        "Bot WhatsApp untuk grup komunitas dengan whitelist grup, menu command otomatis, fitur stiker, unduhan MP3 YouTube ringan, panduan guild, intro member baru, respon karakter Fuuka, auto reconnect, health server, dan cleanup file sementara.",
+      tags: ["JavaScript", "WhatsApp Bot", "Automation", "Guild"],
+      links: [],
+      note: "Bot digunakan untuk kebutuhan internal komunitas.",
+      secondaryAction: {
+        label: "Hubungi Saya",
+        href: "#contact",
+        variant: "secondary",
+        internal: true,
+      },
+    },
+    {
+      title: "Novelku",
+      eyebrow: "Web Download",
+      status: "Online",
+      highlight: "Website untuk mengunduh novel hasil fan translation.",
+      description:
+        "Novelku adalah website yang menyediakan halaman unduhan novel hasil fan translation dengan tampilan sederhana agar pengguna mudah menemukan dan mengakses bacaan.",
+      tags: ["Website", "HTML", "CSS", "JavaScript"],
+      links: [
+        {
+          label: "Lihat Website",
+          href: "https://www.novelku.biz.id/",
+          variant: "primary",
+        },
+        {
+          label: "Source Code",
+          href: "https://github.com/kurnya/novelku",
+          variant: "secondary",
+        },
+      ],
+    },
+    {
       title: "Kyron - Auto Clicker",
       eyebrow: "Desktop App",
       status: "Release Tersedia",

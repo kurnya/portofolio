@@ -742,6 +742,10 @@ h2 {
   font-size: 1.02rem;
 }
 
+.project-card .note {
+  margin-bottom: 0;
+}
+
 .tag {
   padding: 8px 12px;
   border-radius: 999px;
