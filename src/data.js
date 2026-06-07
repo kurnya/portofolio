@@ -180,6 +180,27 @@ export const fallbackPortfolioData = {
       ],
     },
     {
+      title: "Localix",
+      eyebrow: "Desktop App",
+      status: "Release Tersedia",
+      highlight: "Manajer server lokal Windows untuk menjalankan Apache, PHP, MySQL, dan proyek lokal dari satu dashboard.",
+      description:
+        "Localix adalah aplikasi desktop Windows untuk mengelola server lokal dengan kontrol Apache dan MySQL, dashboard status, pemindaian project dari folder www, generator Virtual Host, shortcut phpMyAdmin, helper Laravel, log viewer, serta dukungan tema light, dark, dan system.",
+      tags: ["Desktop App", "Local Server", "Apache", "MySQL", "PHP"],
+      links: [
+        {
+          label: "Download",
+          href: "https://github.com/kurnya/Localix/releases/tag/v0.1.0",
+          variant: "primary",
+        },
+        {
+          label: "Source Code",
+          href: "https://github.com/kurnya/Localix",
+          variant: "secondary",
+        },
+      ],
+    },
+    {
       title: "Klinik Billing System",
       eyebrow: "Full System",
       status: "Lokal Server",
