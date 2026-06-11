@@ -59,7 +59,7 @@ function Modal({ open, title, onClose, children }) {
 function ProjectAction({ action, onGalleryOpen }) {
   if (action.action === "gallery") {
     return (
-      <button type="button" className={`action-button ${action.variant}`} onClick={onGalleryOpen}>
+      <button type="button" className={`action-button ${action.variant}`} onClick={() => onGalleryOpen(action.gallerySet)}>
         {action.label}
       </button>
     );
@@ -167,7 +167,7 @@ function Icon({ name }) {
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeCertificate, setActiveCertificate] = useState(null);
-  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(null);
   const [galleryZoom, setGalleryZoom] = useState(1);
   const [dragStartX, setDragStartX] = useState(0);
@@ -188,6 +188,14 @@ function App() {
   const certificates = portfolio.certificates ?? [];
   const contactLinks = portfolio.contactLinks ?? [];
   const clinicShots = portfolio.clinicShots ?? [];
+  const fintrackShots = portfolio.fintrackShots ?? [];
+  const galleryMap = {
+    clinic: { title: "Klinik Billing System", images: clinicShots },
+    fintrack: { title: "Fintrack", images: fintrackShots },
+  };
+  const activeGallery = galleryOpen ? galleryMap[galleryOpen] : null;
+  const activeGalleryImages = activeGallery?.images ?? [];
+  const galleryTitle = activeGallery?.title ?? "Galeri";
 
   useEffect(() => {
     const closeMenu = () => setMobileOpen(false);
@@ -213,30 +221,32 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (activeGalleryIndex === null) return undefined;
+    if (activeGalleryIndex === null || activeGalleryImages.length === 0) return undefined;
 
     const handleKeyDown = (event) => {
       if (event.key === "ArrowRight") {
-        setActiveGalleryIndex((current) => ((current ?? 0) + 1) % clinicShots.length);
+        setActiveGalleryIndex((current) => ((current ?? 0) + 1) % activeGalleryImages.length);
         setGalleryZoom(1);
       }
 
       if (event.key === "ArrowLeft") {
-        setActiveGalleryIndex((current) => ((current ?? 0) - 1 + clinicShots.length) % clinicShots.length);
+        setActiveGalleryIndex((current) => ((current ?? 0) - 1 + activeGalleryImages.length) % activeGalleryImages.length);
         setGalleryZoom(1);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeGalleryIndex]);
+  }, [activeGalleryIndex, activeGalleryImages.length]);
 
-  const openGalleryViewer = (index) => {
+  const openGalleryViewer = (index, gallerySet = galleryOpen) => {
+    setGalleryOpen(gallerySet);
     setActiveGalleryIndex(index);
     setGalleryZoom(1);
   };
 
   const closeGalleryViewer = () => {
+    setGalleryOpen(null);
     setActiveGalleryIndex(null);
     setGalleryZoom(1);
     setTranslateX(0);
@@ -261,9 +271,9 @@ function App() {
     const deltaX = e.clientX - dragStartX;
     if (Math.abs(deltaX) > 50) {
       if (deltaX > 0) {
-        setActiveGalleryIndex((current) => (current > 0 ? current - 1 : clinicShots.length - 1));
+        setActiveGalleryIndex((current) => (current > 0 ? current - 1 : activeGalleryImages.length - 1));
       } else {
-        setActiveGalleryIndex((current) => (current < clinicShots.length - 1 ? current + 1 : 0));
+        setActiveGalleryIndex((current) => (current < activeGalleryImages.length - 1 ? current + 1 : 0));
       }
     }
     setDragStartX(0);
@@ -289,9 +299,9 @@ function App() {
     const deltaX = dragCurrentX - dragStartX;
     if (Math.abs(deltaX) > 50) {
       if (deltaX > 0) {
-        setActiveGalleryIndex((current) => (current > 0 ? current - 1 : clinicShots.length - 1));
+        setActiveGalleryIndex((current) => (current > 0 ? current - 1 : activeGalleryImages.length - 1));
       } else {
-        setActiveGalleryIndex((current) => (current < clinicShots.length - 1 ? current + 1 : 0));
+        setActiveGalleryIndex((current) => (current < activeGalleryImages.length - 1 ? current + 1 : 0));
       }
     }
     setDragStartX(0);
@@ -300,12 +310,12 @@ function App() {
   };
 
   const showNextImage = () => {
-    setActiveGalleryIndex((current) => ((current ?? 0) + 1) % clinicShots.length);
+    setActiveGalleryIndex((current) => ((current ?? 0) + 1) % activeGalleryImages.length);
     setGalleryZoom(1);
   };
 
   const showPrevImage = () => {
-    setActiveGalleryIndex((current) => ((current ?? 0) - 1 + clinicShots.length) % clinicShots.length);
+    setActiveGalleryIndex((current) => ((current ?? 0) - 1 + activeGalleryImages.length) % activeGalleryImages.length);
     setGalleryZoom(1);
   };
 
@@ -510,19 +520,19 @@ function App() {
                     <ProjectAction
                       key={link.href}
                       action={link}
-                      onGalleryOpen={() => setGalleryOpen(true)}
+                      onGalleryOpen={(gallerySet) => openGalleryViewer(0, gallerySet)}
                     />
                   ))}
                   {project.secondaryAction ? (
                     <ProjectAction
                       action={project.secondaryAction}
-                      onGalleryOpen={() => setGalleryOpen(true)}
+                      onGalleryOpen={(gallerySet) => openGalleryViewer(0, gallerySet)}
                     />
                   ) : null}
                   {project.tertiaryAction ? (
                     <ProjectAction
                       action={project.tertiaryAction}
-                      onGalleryOpen={() => setGalleryOpen(true)}
+                      onGalleryOpen={(gallerySet) => openGalleryViewer(0, gallerySet)}
                     />
                   ) : null}
                 </div>
@@ -598,22 +608,22 @@ function App() {
       </Modal>
 
       <Modal
-        open={galleryOpen}
-        title="Gallery Klinik Billing System"
+        open={Boolean(galleryOpen)}
+        title={`Gallery ${galleryTitle}`}
         onClose={() => {
-          setGalleryOpen(false);
+          setGalleryOpen(null);
           closeGalleryViewer();
         }}
       >
         <div className="gallery-grid">
-          {clinicShots.map((shot, index) => (
+          {activeGalleryImages.map((shot, index) => (
             <button
               type="button"
               key={shot}
               className="gallery-thumb"
               onClick={() => openGalleryViewer(index)}
             >
-              <img src={shot} alt="Tampilan Klinik Billing System" className="gallery-image" />
+              <img src={shot} alt={`Tampilan ${galleryTitle}`} className="gallery-image" />
             </button>
           ))}
         </div>
@@ -621,7 +631,7 @@ function App() {
 
       <Modal
         open={activeGalleryIndex !== null}
-        title="Klinik Billing System"
+        title={galleryTitle}
         onClose={closeGalleryViewer}
       >
         {activeGalleryIndex !== null ? (
@@ -637,8 +647,8 @@ function App() {
           style={{ cursor: translateX !== 0 ? 'grabbing' : 'grab' }}
         >
             <img 
-              src={clinicShots[activeGalleryIndex]}
-              alt="Screenshot Klinik Billing System" 
+              src={activeGalleryImages[activeGalleryIndex]}
+              alt={`Screenshot ${galleryTitle}`} 
               className="modal-image"
               style={{ 
                 transform: `translateX(${translateX}px) scale(${galleryZoom})`,
@@ -653,3 +663,12 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+

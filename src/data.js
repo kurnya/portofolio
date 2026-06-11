@@ -76,12 +76,36 @@ export const fallbackPortfolioData = {
   ],
   projects: [
     {
+      title: "Fintrack",
+      eyebrow: "Sistem Internal",
+      status: "Lokal Server",
+      highlight: "Aplikasi internal untuk pencatatan uang keluar perusahaan secara terstruktur.",
+      description:
+        "Fintrack adalah aplikasi Laravel + TailwindCSS untuk pencatatan uang keluar perusahaan, histori transaksi, dan laporan kas keluar. Aplikasi ini berjalan di jaringan internal customer sehingga akses publik tidak tersedia.",
+      tags: ["Laravel", "Tailwind CSS", "MySQL", "Internal App"],
+      links: [],
+      note: "Aplikasi hanya dapat diakses melalui jaringan internal customer.",
+      secondaryAction: {
+        label: "Lihat Galeri",
+        action: "gallery",
+        gallerySet: "fintrack",
+        variant: "primary",
+      },
+      tertiaryAction: {
+        label: "Hubungi Saya",
+        href: "#contact",
+        variant: "secondary",
+        internal: true,
+      },
+    },
+
+    {
       title: "Website Monitoring Cuaca",
       eyebrow: "Monitoring",
       status: "Online",
-      highlight: "Pemantauan cuaca real-time dengan tampilan yang cepat dibaca.",
+      highlight: "Aplikasi monitoring cuaca real-time dengan tampilan yang ringan dan jelas.",
       description:
-        "Website interaktif untuk menampilkan data cuaca real-time dari API BMKG dengan fitur pemantauan cuaca.",
+        "Website interaktif untuk menampilkan data cuaca real-time dari API BMKG. Tampilan dibuat ringan agar cepat dibaca dan dipantau.",
       tags: ["HTML", "CSS", "JavaScript", "API"],
       links: [
         {
@@ -91,7 +115,7 @@ export const fallbackPortfolioData = {
         },
       ],
       note: "Source code belum tersedia untuk publik.",
-      secondaryAction: {
+      tertiaryAction: {
         label: "Hubungi Saya",
         href: "#contact",
         variant: "secondary",
@@ -103,9 +127,9 @@ export const fallbackPortfolioData = {
       title: "Web Jadwal Satpam PT Oscarmas",
       eyebrow: "Sistem Internal",
       status: "Online",
-      highlight: "Jadwal satpam yang bisa diakses cepat dan diekspor ke PDF.",
+      highlight: "Aplikasi jadwal satpam yang cepat dibuka dan mudah diekspor ke PDF.",
       description:
-        "Website sederhana untuk menampilkan jadwal satpam di PT Oscarmas dengan kemampuan ekspor ke format PDF.",
+        "Website sederhana untuk menampilkan jadwal satpam di PT Oscarmas. Hasil jadwal bisa diekspor ke PDF untuk kebutuhan internal.",
       tags: ["HTML", "CSS", "JavaScript", "PDF"],
       links: [
         {
@@ -124,13 +148,13 @@ export const fallbackPortfolioData = {
       title: "Bot WhatsApp Grup Komunitas",
       eyebrow: "Chat Automation",
       status: "Aktif",
-      highlight: "Bot WhatsApp khusus grup komunitas dengan command yang bisa diatur per grup.",
+      highlight: "Bot WhatsApp komunitas dengan command yang fleksibel per grup dan otomatis.",
       description:
-        "Bot WhatsApp untuk grup komunitas dengan whitelist grup, menu command otomatis, fitur stiker, unduhan MP3 YouTube ringan, panduan guild, intro member baru, respon karakter Fuuka, auto reconnect, health server, dan cleanup file sementara.",
+        "Bot WhatsApp untuk grup komunitas dengan whitelist grup dan menu command otomatis. Fitur ini mencakup stiker, unduhan MP3 ringan, auto reconnect, dan cleanup file sementara.",
       tags: ["JavaScript", "WhatsApp Bot", "Automation", "Guild"],
       links: [],
       note: "Bot digunakan untuk kebutuhan internal komunitas.",
-      secondaryAction: {
+      tertiaryAction: {
         label: "Hubungi Saya",
         href: "#contact",
         variant: "secondary",
@@ -141,9 +165,9 @@ export const fallbackPortfolioData = {
       title: "Novelku",
       eyebrow: "Web Download",
       status: "Online",
-      highlight: "Website untuk mengunduh novel hasil fan translation.",
+      highlight: "Website unduhan novel fan translation dengan tampilan sederhana dan rapi.",
       description:
-        "Novelku adalah website yang menyediakan halaman unduhan novel hasil fan translation dengan tampilan sederhana agar pengguna mudah menemukan dan mengakses bacaan.",
+        "Novelku adalah website untuk unduhan novel hasil fan translation. Tampilan dibuat sederhana agar pengguna mudah menemukan dan mengakses bacaan.",
       tags: ["Website", "HTML", "CSS", "JavaScript"],
       links: [
         {
@@ -162,9 +186,9 @@ export const fallbackPortfolioData = {
       title: "Kyron - Auto Clicker",
       eyebrow: "Desktop App",
       status: "Release Tersedia",
-      highlight: "Aplikasi autoclicker desktop modern dengan file .exe yang siap diunduh.",
+      highlight: "Aplikasi autoclicker desktop modern dengan rilis .exe yang siap dipakai.",
       description:
-        "Kyron adalah aplikasi autoclicker desktop berbasis Python dengan antarmuka modern, manajemen script, randomizer klik dan delay, serta rilis Windows yang siap dipakai.",
+        "Kyron adalah aplikasi autoclicker desktop berbasis Python dengan antarmuka modern. Aplikasi ini memiliki manajemen script, randomizer klik, dan rilis Windows yang siap dipakai.",
       tags: ["Python", "Tkinter", "Desktop App", "Automation"],
       links: [
         {
@@ -183,9 +207,9 @@ export const fallbackPortfolioData = {
       title: "Localix",
       eyebrow: "Desktop App",
       status: "Release Tersedia",
-      highlight: "Manajer server lokal Windows untuk menjalankan Apache, PHP, MySQL, dan proyek lokal dari satu dashboard.",
+      highlight: "Manajer server lokal Windows dengan dashboard status yang terpusat dan rapi.",
       description:
-        "Localix adalah aplikasi desktop Windows untuk mengelola server lokal dengan kontrol Apache dan MySQL, dashboard status, pemindaian project dari folder www, generator Virtual Host, shortcut phpMyAdmin, helper Laravel, log viewer, serta dukungan tema light, dark, dan system.",
+        "Localix adalah aplikasi desktop Windows untuk mengelola server lokal dengan kontrol Apache dan MySQL. Fitur utamanya mencakup dashboard status, pemindaian project, Virtual Host, dan log viewer.",
       tags: ["Desktop App", "Local Server", "Apache", "MySQL", "PHP"],
       links: [
         {
@@ -204,15 +228,16 @@ export const fallbackPortfolioData = {
       title: "Klinik Billing System",
       eyebrow: "Full System",
       status: "Lokal Server",
-      highlight: "Sistem klinik lengkap dengan screenshot tampilan yang bisa ditinjau.",
+      highlight: "Sistem klinik lengkap dengan tampilan yang siap ditinjau melalui galeri.",
       description:
-        "Sistem informasi klinik untuk manajemen data pasien, rekam medis, dan billing dengan fitur lengkap untuk kebutuhan operasional klinik.",
+        "Sistem informasi klinik untuk manajemen data pasien, rekam medis, dan billing. Fitur lengkapnya mendukung kebutuhan operasional klinik sehari-hari.",
       tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS"],
       links: [],
       note: "Aplikasi berjalan di lokal server. Screenshot ditampilkan di galeri proyek.",
       secondaryAction: {
         label: "Lihat Galeri",
         action: "gallery",
+        gallerySet: "clinic",
         variant: "primary",
       },
       tertiaryAction: {
@@ -222,6 +247,14 @@ export const fallbackPortfolioData = {
         internal: true,
       },
     },
+  ],
+  fintrackShots: [
+    asset("images/Fintrack/Fintrack (1).png"),
+    asset("images/Fintrack/Fintrack (2).png"),
+    asset("images/Fintrack/Fintrack (3).png"),
+    asset("images/Fintrack/Fintrack (4).png"),
+    asset("images/Fintrack/Fintrack (5).png"),
+    asset("images/Fintrack/Fintrack (6).png"),
   ],
   clinicShots: [
     asset("images/clinic/Cuplikan layar 2026-03-15 194358.png"),
@@ -267,3 +300,24 @@ export const fallbackPortfolioData = {
     { label: "WhatsApp", href: "https://wa.me/6289520786464", icon: "whatsapp" },
   ],
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
