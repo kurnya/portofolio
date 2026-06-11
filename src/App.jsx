@@ -56,6 +56,44 @@ function Modal({ open, title, onClose, children }) {
   );
 }
 
+function ImageViewer({ title, images, activeIndex, onSelect, onPrev, onNext, onClose }) {
+  const activeImage = activeIndex !== null ? images[activeIndex] : null;
+
+  if (!activeImage) return null;
+
+  return (
+    <Modal open={activeIndex !== null} title={title} onClose={onClose}>
+      <div className="viewer-shell">
+        <div className="viewer-toolbar">
+          <p>{activeIndex + 1} / {images.length}</p>
+        </div>
+        <div className="viewer-stage">
+          <button type="button" className="viewer-nav" onClick={onPrev} aria-label="Gambar sebelumnya">
+            {"<"}
+          </button>
+          <img src={activeImage} alt={`Screenshot ${title}`} className="viewer-image" />
+          <button type="button" className="viewer-nav" onClick={onNext} aria-label="Gambar berikutnya">
+            {">"}
+          </button>
+        </div>
+        <div className="viewer-thumbs" aria-label="Thumbnail galeri">
+          {images.map((image, index) => (
+            <button
+              type="button"
+              key={image}
+              className={`viewer-thumb ${index === activeIndex ? "active" : ""}`}
+              onClick={() => onSelect(index)}
+              aria-label={`Buka gambar ${index + 1}`}
+            >
+              <img src={image} alt="" />
+            </button>
+          ))}
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
 function ProjectAction({ action, onGalleryOpen }) {
   if (action.action === "gallery") {
     return (
@@ -169,12 +207,7 @@ function App() {
   const [activeCertificate, setActiveCertificate] = useState(null);
   const [galleryOpen, setGalleryOpen] = useState(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(null);
-  const [galleryZoom, setGalleryZoom] = useState(1);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [dragCurrentX, setDragCurrentX] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
   const [portfolio, setPortfolio] = useState(fallbackPortfolioData);
-  const [dataSource, setDataSource] = useState("fallback");
   const age = useMemo(
     () => portfolio.profile?.age ?? calculateAge(),
     [portfolio.profile?.age],
@@ -210,7 +243,6 @@ function App() {
       const result = await getPortfolioData();
       if (!mounted) return;
       setPortfolio(result.data);
-      setDataSource(result.source);
     };
 
     loadPortfolio();
@@ -226,12 +258,10 @@ function App() {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowRight") {
         setActiveGalleryIndex((current) => ((current ?? 0) + 1) % activeGalleryImages.length);
-        setGalleryZoom(1);
       }
 
       if (event.key === "ArrowLeft") {
         setActiveGalleryIndex((current) => ((current ?? 0) - 1 + activeGalleryImages.length) % activeGalleryImages.length);
-        setGalleryZoom(1);
       }
     };
 
@@ -242,81 +272,23 @@ function App() {
   const openGalleryViewer = (index, gallerySet = galleryOpen) => {
     setGalleryOpen(gallerySet);
     setActiveGalleryIndex(index);
-    setGalleryZoom(1);
   };
 
   const closeGalleryViewer = () => {
     setGalleryOpen(null);
     setActiveGalleryIndex(null);
-    setGalleryZoom(1);
-    setTranslateX(0);
-    setDragCurrentX(0);
-    setDragStartX(0);
-  };
-
-  const handleMouseDown = (e) => {
-    setDragStartX(e.clientX);
-    setDragCurrentX(e.clientX);
-  };
-
-  const handleMouseMove = (e) => {
-    if (dragStartX === 0) return;
-    setDragCurrentX(e.clientX);
-    const deltaX = e.clientX - dragStartX;
-    setTranslateX(deltaX);
-  };
-
-  const handleMouseUp = (e) => {
-    if (dragStartX === 0) return;
-    const deltaX = e.clientX - dragStartX;
-    if (Math.abs(deltaX) > 50) {
-      if (deltaX > 0) {
-        setActiveGalleryIndex((current) => (current > 0 ? current - 1 : activeGalleryImages.length - 1));
-      } else {
-        setActiveGalleryIndex((current) => (current < activeGalleryImages.length - 1 ? current + 1 : 0));
-      }
-    }
-    setDragStartX(0);
-    setDragCurrentX(0);
-    setTranslateX(0);
-  };
-
-  const handleTouchStart = (e) => {
-    setDragStartX(e.touches[0].clientX);
-    setDragCurrentX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    if (dragStartX === 0) return;
-    setDragCurrentX(e.touches[0].clientX);
-    const deltaX = e.touches[0].clientX - dragStartX;
-    setTranslateX(deltaX);
-    e.preventDefault();
-  };
-
-  const handleTouchEnd = (e) => {
-    if (dragStartX === 0) return;
-    const deltaX = dragCurrentX - dragStartX;
-    if (Math.abs(deltaX) > 50) {
-      if (deltaX > 0) {
-        setActiveGalleryIndex((current) => (current > 0 ? current - 1 : activeGalleryImages.length - 1));
-      } else {
-        setActiveGalleryIndex((current) => (current < activeGalleryImages.length - 1 ? current + 1 : 0));
-      }
-    }
-    setDragStartX(0);
-    setDragCurrentX(0);
-    setTranslateX(0);
   };
 
   const showNextImage = () => {
     setActiveGalleryIndex((current) => ((current ?? 0) + 1) % activeGalleryImages.length);
-    setGalleryZoom(1);
   };
 
   const showPrevImage = () => {
     setActiveGalleryIndex((current) => ((current ?? 0) - 1 + activeGalleryImages.length) % activeGalleryImages.length);
-    setGalleryZoom(1);
+  };
+
+  const selectGalleryImage = (index) => {
+    setActiveGalleryIndex(index);
   };
 
   return (
@@ -479,10 +451,13 @@ function App() {
                     </span>
                     <h3>{skill.name}</h3>
                   </div>
-                  <span>{skill.level}%</span>
                 </div>
-                <div className="progress">
-                  <div className="progress-bar" style={{ width: `${skill.level}%` }} />
+                <div className="tool-list">
+                  {skill.tools.map((tool) => (
+                    <span key={tool} className="tag">
+                      {tool}
+                    </span>
+                  ))}
                 </div>
               </article>
             ))}
@@ -507,6 +482,11 @@ function App() {
                 </div>
                 <p className="project-highlight">{project.highlight}</p>
                 <p>{project.description}</p>
+                {project.impact ? (
+                  <p className="project-impact">
+                    <strong>Impact:</strong> {project.impact}
+                  </p>
+                ) : null}
                 <div className="tag-list">
                   {project.tags.map((tag) => (
                     <span key={tag} className="tag">
@@ -556,7 +536,9 @@ function App() {
                 onClick={() => setActiveCertificate(certificate)}
               >
                 <img src={certificate.src} alt={certificate.desc} />
-                <span>{certificate.desc}</span>
+                <span className="certificate-year">{certificate.year}</span>
+                <h3>{certificate.title}</h3>
+                <p>{certificate.issuer}</p>
               </button>
             ))}
           </div>
@@ -592,72 +574,35 @@ function App() {
 
       <footer className="site-footer" />
 
-      {dataSource === "fallback" ? <div className="data-badge">Mode lokal aktif</div> : null}
-
       <Modal
         open={Boolean(activeCertificate)}
-        title="Detail Sertifikat"
+        title={activeCertificate?.title ?? "Detail Sertifikat"}
         onClose={() => setActiveCertificate(null)}
       >
         {activeCertificate ? (
-          <div className="modal-image-wrap">
-            <img src={activeCertificate.src} alt={activeCertificate.desc} className="modal-image" />
-            <p>{activeCertificate.desc}</p>
+          <div className="certificate-viewer">
+            <div className="certificate-image-frame">
+              <img src={activeCertificate.src} alt={activeCertificate.desc} className="certificate-image" />
+            </div>
+            <aside className="certificate-detail">
+              <p className="eyebrow">{activeCertificate.year}</p>
+              <h3>{activeCertificate.title}</h3>
+              <p>{activeCertificate.issuer}</p>
+              <p className="muted">{activeCertificate.desc}</p>
+            </aside>
           </div>
         ) : null}
       </Modal>
 
-      <Modal
-        open={Boolean(galleryOpen)}
-        title={`Gallery ${galleryTitle}`}
-        onClose={() => {
-          setGalleryOpen(null);
-          closeGalleryViewer();
-        }}
-      >
-        <div className="gallery-grid">
-          {activeGalleryImages.map((shot, index) => (
-            <button
-              type="button"
-              key={shot}
-              className="gallery-thumb"
-              onClick={() => openGalleryViewer(index)}
-            >
-              <img src={shot} alt={`Tampilan ${galleryTitle}`} className="gallery-image" />
-            </button>
-          ))}
-        </div>
-      </Modal>
-
-      <Modal
-        open={activeGalleryIndex !== null}
+      <ImageViewer
         title={galleryTitle}
+        images={activeGalleryImages}
+        activeIndex={activeGalleryIndex}
+        onSelect={selectGalleryImage}
+        onPrev={showPrevImage}
+        onNext={showNextImage}
         onClose={closeGalleryViewer}
-      >
-        {activeGalleryIndex !== null ? (
-        <div 
-          className="modal-image-wrap"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          style={{ cursor: translateX !== 0 ? 'grabbing' : 'grab' }}
-        >
-            <img 
-              src={activeGalleryImages[activeGalleryIndex]}
-              alt={`Screenshot ${galleryTitle}`} 
-              className="modal-image"
-              style={{ 
-                transform: `translateX(${translateX}px) scale(${galleryZoom})`,
-                transition: translateX !== 0 ? 'none' : 'transform 0.2s ease'
-              }}
-            />
-          </div>
-        ) : null}
-      </Modal>
+      />
     </>
   );
 }

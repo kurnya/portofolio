@@ -12,32 +12,27 @@ export const fallbackPortfolioData = {
   profile: {
     name: "Dimas Kurniawan",
     headline:
-      "Mahasiswa Sistem Informasi yang fokus pada Frontend Development dan Machine Learning, dengan pendekatan yang rapi, responsif, dan nyaman digunakan.",
+      "Mahasiswa Sistem Informasi yang membangun aplikasi web, desktop, automation, dan solusi internal dengan tampilan rapi serta alur kerja yang mudah dipakai.",
     image: asset("images/profile/Profil-saya.jpg"),
     badge: "Frontend + ML",
     email: "dimasqpr23@gmail.com",
     age: 23,
     startYear: "2022",
     summary:
-      "Mahasiswa Sistem Informasi yang suka mengubah ide menjadi produk digital yang jelas dan enak dipakai.",
-    heroMetrics: [
-      { value: "5+", label: "Project" },
-      { value: "7", label: "Sertifikat" },
-      { value: "23", label: "Usia" },
-    ],
+      "Saya tertarik pada pengembangan produk digital yang menyelesaikan kebutuhan nyata: mulai dari dashboard internal, aplikasi desktop, otomasi, sampai eksperimen Machine Learning.",
   },
   aboutItems: [
     {
-      title: "Pendidikan",
-      text: "Mahasiswa Sistem Informasi di Universitas Muhammadiyah Pontianak. Lahir di Pontianak pada 3 Maret 2003 sebagai anak pertama dari dua bersaudara.",
+      title: "Fokus Saat Ini",
+      text: "Membangun aplikasi web dan desktop yang rapi, cepat dipahami, dan mudah dikembangkan untuk kebutuhan operasional maupun personal project.",
     },
     {
-      title: "Minat & Karier",
-      text: "Tertarik pada Machine Learning dan Frontend Development. Perjalanan saya ke dunia teknologi dimulai serius saat pandemi COVID-19.",
+      title: "Minat Karier",
+      text: "Tertarik pada Frontend Development, Laravel, automation, dan Machine Learning, terutama ketika teknologi bisa membantu pekerjaan sehari-hari jadi lebih terstruktur.",
     },
     {
-      title: "Perjalanan",
-      text: "Saya terus belajar membangun aplikasi dan website yang tidak hanya berfungsi, tetapi juga nyaman digunakan dan mudah dikembangkan.",
+      title: "Cara Kerja",
+      text: "Saya terbiasa memulai dari masalah pengguna, merapikan alur utama, lalu membuat tampilan dan fitur yang cukup jelas untuk dipakai tanpa banyak penjelasan.",
     },
   ],
   educationItems: [
@@ -67,12 +62,10 @@ export const fallbackPortfolioData = {
     },
   ],
   skills: [
-    { name: "HTML", level: 90, icon: "html" },
-    { name: "CSS", level: 80, icon: "css" },
-    { name: "JavaScript", level: 80, icon: "javascript" },
-    { name: "Python", level: 85, icon: "python" },
-    { name: "Laravel", level: 82, icon: "laravel" },
-    { name: "Flutter", level: 74, icon: "flutter" },
+    { name: "Frontend", icon: "javascript", tools: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"] },
+    { name: "Backend", icon: "laravel", tools: ["Laravel", "PHP", "MySQL", "REST API"] },
+    { name: "Desktop App", icon: "python", tools: ["Python", "Tkinter", "Windows Release", "Automation"] },
+    { name: "Mobile & Experiment", icon: "flutter", tools: ["Flutter", "Machine Learning", "Data Processing"] },
   ],
   projects: [
     {
@@ -82,6 +75,7 @@ export const fallbackPortfolioData = {
       highlight: "Aplikasi internal untuk pencatatan uang keluar perusahaan secara terstruktur.",
       description:
         "Fintrack adalah aplikasi Laravel + TailwindCSS untuk pencatatan uang keluar perusahaan, histori transaksi, dan laporan kas keluar. Aplikasi ini berjalan di jaringan internal customer sehingga akses publik tidak tersedia.",
+      impact: "Membantu pencatatan kas keluar internal agar transaksi, histori, dan laporan lebih mudah ditelusuri oleh admin.",
       tags: ["Laravel", "Tailwind CSS", "MySQL", "Internal App"],
       links: [],
       note: "Aplikasi hanya dapat diakses melalui jaringan internal customer.",
@@ -106,6 +100,7 @@ export const fallbackPortfolioData = {
       highlight: "Aplikasi monitoring cuaca real-time dengan tampilan yang ringan dan jelas.",
       description:
         "Website interaktif untuk menampilkan data cuaca real-time dari API BMKG. Tampilan dibuat ringan agar cepat dibaca dan dipantau.",
+      impact: "Memudahkan pemantauan informasi cuaca real-time melalui halaman yang cepat dibuka dan mudah dipahami.",
       tags: ["HTML", "CSS", "JavaScript", "API"],
       links: [
         {
@@ -130,6 +125,7 @@ export const fallbackPortfolioData = {
       highlight: "Aplikasi jadwal satpam yang cepat dibuka dan mudah diekspor ke PDF.",
       description:
         "Website sederhana untuk menampilkan jadwal satpam di PT Oscarmas. Hasil jadwal bisa diekspor ke PDF untuk kebutuhan internal.",
+      impact: "Mengurangi pekerjaan manual dalam membagikan jadwal karena data bisa dilihat online dan diekspor ke PDF.",
       tags: ["HTML", "CSS", "JavaScript", "PDF"],
       links: [
         {
@@ -151,6 +147,7 @@ export const fallbackPortfolioData = {
       highlight: "Bot WhatsApp komunitas dengan command yang fleksibel per grup dan otomatis.",
       description:
         "Bot WhatsApp untuk grup komunitas dengan whitelist grup dan menu command otomatis. Fitur ini mencakup stiker, unduhan MP3 ringan, auto reconnect, dan cleanup file sementara.",
+      impact: "Membantu admin komunitas menyediakan fitur otomatis tanpa perlu interaksi manual berulang.",
       tags: ["JavaScript", "WhatsApp Bot", "Automation", "Guild"],
       links: [],
       note: "Bot digunakan untuk kebutuhan internal komunitas.",
@@ -168,6 +165,7 @@ export const fallbackPortfolioData = {
       highlight: "Website unduhan novel fan translation dengan tampilan sederhana dan rapi.",
       description:
         "Novelku adalah website untuk unduhan novel hasil fan translation. Tampilan dibuat sederhana agar pengguna mudah menemukan dan mengakses bacaan.",
+      impact: "Menyediakan pengalaman browsing yang sederhana untuk pembaca agar konten lebih cepat ditemukan.",
       tags: ["Website", "HTML", "CSS", "JavaScript"],
       links: [
         {
@@ -189,6 +187,7 @@ export const fallbackPortfolioData = {
       highlight: "Aplikasi autoclicker desktop modern dengan rilis .exe yang siap dipakai.",
       description:
         "Kyron adalah aplikasi autoclicker desktop berbasis Python dengan antarmuka modern. Aplikasi ini memiliki manajemen script, randomizer klik, dan rilis Windows yang siap dipakai.",
+      impact: "Membuat proses klik berulang lebih mudah dikontrol lewat script, randomizer, dan paket rilis Windows.",
       tags: ["Python", "Tkinter", "Desktop App", "Automation"],
       links: [
         {
@@ -210,6 +209,7 @@ export const fallbackPortfolioData = {
       highlight: "Manajer server lokal Windows dengan dashboard status yang terpusat dan rapi.",
       description:
         "Localix adalah aplikasi desktop Windows untuk mengelola server lokal dengan kontrol Apache dan MySQL. Fitur utamanya mencakup dashboard status, pemindaian project, Virtual Host, dan log viewer.",
+      impact: "Menyatukan kontrol server lokal ke satu dashboard agar proses menjalankan project lokal lebih cepat dan terpantau.",
       tags: ["Desktop App", "Local Server", "Apache", "MySQL", "PHP"],
       links: [
         {
@@ -231,6 +231,7 @@ export const fallbackPortfolioData = {
       highlight: "Sistem klinik lengkap dengan tampilan yang siap ditinjau melalui galeri.",
       description:
         "Sistem informasi klinik untuk manajemen data pasien, rekam medis, dan billing. Fitur lengkapnya mendukung kebutuhan operasional klinik sehari-hari.",
+      impact: "Merapikan alur data pasien, rekam medis, dan billing dalam satu sistem yang bisa ditinjau lewat galeri.",
       tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS"],
       links: [],
       note: "Aplikasi berjalan di lokal server. Screenshot ditampilkan di galeri proyek.",
@@ -267,36 +268,56 @@ export const fallbackPortfolioData = {
   certificates: [
     {
       src: asset("images/certificates/1.jpg"),
-      desc: "Virtual Exchange Fall Semester Program 2023-2024 di Asia University, Taiwan.",
+      title: "Virtual Exchange Fall Semester",
+      issuer: "Asia University, Taiwan",
+      year: "2023-2024",
+      desc: "Program virtual exchange Fall Semester di Asia University, Taiwan.",
     },
     {
       src: asset("images/certificates/4.jpg"),
-      desc: "Peraih IPK tertinggi 3.95 Program Studi Sistem Informasi tahun 2024.",
+      title: "IPK Tertinggi Program Studi",
+      issuer: "Sistem Informasi",
+      year: "2024",
+      desc: "Peraih IPK tertinggi 3.95 Program Studi Sistem Informasi.",
     },
     {
       src: asset("images/certificates/6.jpg"),
-      desc: "Juara Favorit Gagasan Kreatif Pilmapres 2024.",
+      title: "Juara Favorit Gagasan Kreatif",
+      issuer: "Pilmapres",
+      year: "2024",
+      desc: "Penghargaan Juara Favorit Gagasan Kreatif Pilmapres.",
     },
     {
       src: asset("images/certificates/7.jpg"),
-      desc: "Juara Harapan 1 Pilmapres 2025.",
+      title: "Juara Harapan 1",
+      issuer: "Pilmapres",
+      year: "2025",
+      desc: "Penghargaan Juara Harapan 1 Pilmapres.",
     },
     {
       src: asset("images/certificates/2.jpg"),
-      desc: "Students Exchange to i-CATS University College and UNIMAS 2025.",
+      title: "Students Exchange",
+      issuer: "i-CATS University College and UNIMAS",
+      year: "2025",
+      desc: "Program students exchange ke i-CATS University College dan UNIMAS.",
     },
     {
       src: asset("images/certificates/3.jpg"),
-      desc: "Guest Lecture on IoT in Agriculture at I-CATS University College 2025.",
+      title: "Guest Lecture on IoT in Agriculture",
+      issuer: "i-CATS University College",
+      year: "2025",
+      desc: "Guest lecture bertema IoT in Agriculture di i-CATS University College.",
     },
     {
       src: asset("images/certificates/5.jpg"),
-      desc: "Mahasiswa Berprestasi Universitas Muhammadiyah Pontianak 2025.",
+      title: "Mahasiswa Berprestasi",
+      issuer: "Universitas Muhammadiyah Pontianak",
+      year: "2025",
+      desc: "Penghargaan Mahasiswa Berprestasi Universitas Muhammadiyah Pontianak.",
     },
   ],
   contactLinks: [
     { label: "GitHub", href: "https://github.com/kurnya", icon: "github" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/dimas-kurniawan", icon: "linkedin" },
     { label: "WhatsApp", href: "https://wa.me/6289520786464", icon: "whatsapp" },
   ],
 };
