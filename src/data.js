@@ -141,6 +141,28 @@ export const fallbackPortfolioData = {
       ],
     },
     {
+      title: "CatatKas",
+      eyebrow: "PWA Finance App",
+      status: "Open Source",
+      highlight: "Aplikasi PWA untuk mencatat pemasukan, pengeluaran, dan saldo kas harian.",
+      description:
+        "CatatKas adalah aplikasi Progressive Web App untuk pencatatan kas pribadi dengan transaksi pemasukan dan pengeluaran, statistik bulanan, grafik pengeluaran, kategori, subkategori, metode pembayaran, serta backup data JSON/CSV. Data disimpan secara lokal di perangkat sehingga aplikasi ringan dan praktis dipakai.",
+      impact: "Membantu pengguna memantau arus kas harian, melihat ringkasan bulanan, dan menjaga data keuangan tetap bisa dicadangkan.",
+      tags: ["PWA", "JavaScript", "LocalStorage", "Finance App", "Open Source"],
+      links: [
+        {
+          label: "Lihat Demo",
+          href: "https://kurnya.github.io/CatatKas/",
+          variant: "primary",
+        },
+        {
+          label: "Download APK",
+          href: "https://github.com/kurnya/CatatKas/releases/download/v1.1.1/catatkas-android.apk",
+          variant: "secondary",
+        },
+      ],
+    },
+    {
       title: "Bot WhatsApp Grup Komunitas",
       eyebrow: "Chat Automation",
       status: "Aktif",

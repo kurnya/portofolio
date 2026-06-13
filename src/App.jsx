@@ -202,11 +202,14 @@ function Icon({ name }) {
   return icons[name] ?? null;
 }
 
+const DESC_LIMIT = 120;
+
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeCertificate, setActiveCertificate] = useState(null);
   const [galleryOpen, setGalleryOpen] = useState(null);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(null);
+  const [expandedDesc, setExpandedDesc] = useState({});
   const [portfolio, setPortfolio] = useState(fallbackPortfolioData);
   const age = useMemo(
     () => portfolio.profile?.age ?? calculateAge(),
@@ -481,7 +484,31 @@ function App() {
                   <span className="status-pill">{project.status}</span>
                 </div>
                 <p className="project-highlight">{project.highlight}</p>
-                <p>{project.description}</p>
+                {project.description.length > DESC_LIMIT ? (
+                  <>
+                    <div className={`project-desc-wrap ${expandedDesc[project.title] ? "expanded" : ""}`}>
+                      <p className="project-desc-text">
+                        {expandedDesc[project.title]
+                          ? project.description
+                          : project.description.slice(0, DESC_LIMIT) + "..."}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="read-more-btn"
+                      onClick={() =>
+                        setExpandedDesc((prev) => ({
+                          ...prev,
+                          [project.title]: !prev[project.title],
+                        }))
+                      }
+                    >
+                      {expandedDesc[project.title] ? "Tutup" : "Baca Selengkapnya"}
+                    </button>
+                  </>
+                ) : (
+                  <p>{project.description}</p>
+                )}
                 {project.impact ? (
                   <p className="project-impact">
                     <strong>Impact:</strong> {project.impact}
