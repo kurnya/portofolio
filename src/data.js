@@ -181,6 +181,48 @@ export const fallbackPortfolioData = {
       },
     },
     {
+      title: "Bot Backup Foto Mutasi Security Oscarmas",
+      eyebrow: "Automation Internal",
+      status: "Aktif",
+      highlight: "Bot WhatsApp untuk membackup foto bukti mutasi secara otomatis dan terstruktur.",
+      description:
+        "Bot internal untuk Tim Security PT Oscarmas Pontianak yang menerima foto bukti mutasi dari grup WhatsApp, mengonversinya ke format WebP, lalu menyimpannya secara otomatis ke Google Drive berdasarkan tahun, bulan, dan hari. Setiap backup juga dicatat ke Google Sheets lengkap dengan waktu, keterangan, dan tautan file.",
+      impact: "Mengurangi pekerjaan backup manual dan membantu tim menemukan kembali bukti mutasi melalui penyimpanan serta pencatatan yang lebih teratur.",
+      tags: ["Node.js", "WhatsApp Bot", "Google Drive", "Google Sheets", "Sharp", "Automation"],
+      links: [],
+      note: "Bot digunakan untuk kebutuhan internal Tim Security PT Oscarmas Pontianak.",
+      tertiaryAction: {
+        label: "Hubungi Saya",
+        href: "#contact",
+        variant: "secondary",
+        internal: true,
+      },
+    },
+    {
+      title: "Sistem Mutasi Sparepart Oscarmas",
+      eyebrow: "Google Apps Script",
+      status: "Aktif",
+      highlight: "Sistem pencatatan pengambilan dan pengantaran sparepart berbasis scan.",
+      description:
+        "Sistem internal untuk Tim Security PT Oscarmas Pontianak yang mencatat mutasi pengambilan dan pengantaran barang sparepart. Setiap ekspedisi wajib melakukan scan terlebih dahulu sebelum mengambil atau mengantarkan barang, sehingga data mutasi dapat tercatat dengan lebih teratur dan mudah ditelusuri.",
+      impact: "Membantu memastikan setiap pergerakan sparepart memiliki catatan yang jelas serta mengurangi risiko barang keluar atau masuk tanpa dokumentasi.",
+      tags: ["Google Apps Script", "Google Sheets", "Scan Workflow", "Automation", "Internal System"],
+      links: [
+        {
+          label: "Buka Apps Script",
+          href: "https://script.google.com/u/0/home/projects/1kvDM2Te31_pC4XZxzT1eXYHuelrtD6dEyJGNGVwI27Y4MnLnpFwAN8gh/edit",
+          variant: "primary",
+        },
+      ],
+      note: "Sistem digunakan untuk kebutuhan internal Tim Security PT Oscarmas Pontianak.",
+      tertiaryAction: {
+        label: "Hubungi Saya",
+        href: "#contact",
+        variant: "secondary",
+        internal: true,
+      },
+    },
+    {
       title: "Novelku",
       eyebrow: "Web Download",
       status: "Online",

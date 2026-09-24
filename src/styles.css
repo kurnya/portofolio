@@ -717,6 +717,7 @@ h2 {
   justify-content: space-between;
   gap: 12px;
   min-width: 0;
+  min-height: 58px;
 }
 
 .project-top h3 {
@@ -746,16 +747,17 @@ h2 {
   margin-bottom: -4px;
   color: var(--text);
   font-size: 1.02rem;
+  min-height: 3.4em;
 }
 
 .project-desc-wrap {
-  max-height: 4.8em;
+  max-height: 6.3em;
   overflow: hidden;
   transition: max-height 0.35s ease;
 }
 
 .project-desc-wrap.expanded {
-  max-height: 7.2em;
+  max-height: 8.4em;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-2) transparent;
@@ -797,6 +799,8 @@ h2 {
 .project-impact {
   margin: 0;
   padding: 10px 12px;
+  min-height: 72px;
+  box-sizing: border-box;
   border-left: 2px solid var(--accent);
   border-radius: 10px;
   background: rgba(244, 201, 93, 0.055);
@@ -810,6 +814,12 @@ h2 {
 
 .project-card .note {
   margin-bottom: 0;
+  min-height: 3.2em;
+}
+
+.project-card .tag-list {
+  min-height: 54px;
+  align-content: flex-start;
 }
 
 .tag {

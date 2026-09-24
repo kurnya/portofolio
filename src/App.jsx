@@ -202,7 +202,7 @@ function Icon({ name }) {
   return icons[name] ?? null;
 }
 
-const DESC_LIMIT = 120;
+const DESC_LIMIT = 180;
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
