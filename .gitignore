@@ -1,15 +1,18 @@
+# Dependencies
 node_modules
-dist
-.DS_Store
-*.log
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Env
 .env
 
 # Lockfiles - package-lock.json kept for CI
 yarn.lock
 pnpm-lock.yaml
-
-# Dist
-dist/
 
 # Logs
 *.log
@@ -20,4 +23,3 @@ Thumbs.db
 
 # TODO files (updated for contributors task)
 TODO*.md
-

@@ -70,6 +70,9 @@ export const fallbackPortfolioData = {
   projects: [
     {
       title: "Fintrack",
+      category: "internal",
+      featured: true,
+      cover: asset("images/Fintrack/Fintrack (1).png"),
       eyebrow: "Sistem Internal",
       status: "Lokal Server",
       highlight: "Aplikasi internal untuk pencatatan uang keluar perusahaan secara terstruktur.",
@@ -95,6 +98,7 @@ export const fallbackPortfolioData = {
 
     {
       title: "Website Monitoring Cuaca",
+      category: "web",
       eyebrow: "Monitoring",
       status: "Online",
       highlight: "Aplikasi monitoring cuaca real-time dengan tampilan yang ringan dan jelas.",
@@ -120,6 +124,7 @@ export const fallbackPortfolioData = {
 
     {
       title: "Web Jadwal Satpam PT Oscarmas",
+      category: "web",
       eyebrow: "Sistem Internal",
       status: "Online",
       highlight: "Aplikasi jadwal satpam yang cepat dibuka dan mudah diekspor ke PDF.",
@@ -142,6 +147,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "CatatKas",
+      category: "web",
       eyebrow: "PWA Finance App",
       status: "Open Source",
       highlight: "Aplikasi PWA untuk mencatat pemasukan, pengeluaran, dan saldo kas harian.",
@@ -164,6 +170,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Bot WhatsApp Grup Komunitas",
+      category: "automation",
       eyebrow: "Chat Automation",
       status: "Aktif",
       highlight: "Bot WhatsApp komunitas dengan command yang fleksibel per grup dan otomatis.",
@@ -182,6 +189,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Bot Backup Foto Mutasi Security Oscarmas",
+      category: "automation",
       eyebrow: "Automation Internal",
       status: "Aktif",
       highlight: "Bot WhatsApp untuk membackup foto bukti mutasi secara otomatis dan terstruktur.",
@@ -200,6 +208,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Sistem Mutasi Sparepart Oscarmas",
+      category: "internal",
       eyebrow: "Google Apps Script",
       status: "Aktif",
       highlight: "Sistem pencatatan pengambilan dan pengantaran sparepart berbasis scan.",
@@ -224,6 +233,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Novelku",
+      category: "web",
       eyebrow: "Web Download",
       status: "Online",
       highlight: "Website unduhan novel fan translation dengan tampilan sederhana dan rapi.",
@@ -246,6 +256,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Kyron - Auto Clicker",
+      category: "desktop",
       eyebrow: "Desktop App",
       status: "Release Tersedia",
       highlight: "Aplikasi autoclicker desktop modern dengan rilis .exe yang siap dipakai.",
@@ -268,6 +279,7 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Localix",
+      category: "desktop",
       eyebrow: "Desktop App",
       status: "Release Tersedia",
       highlight: "Manajer server lokal Windows dengan dashboard status yang terpusat dan rapi.",
@@ -278,7 +290,7 @@ export const fallbackPortfolioData = {
       links: [
         {
           label: "Download",
-          href: "https://github.com/kurnya/Localix/releases/tag/v0.1.0",
+          href: "https://github.com/kurnya/Localix/releases",
           variant: "primary",
         },
         {
@@ -290,6 +302,9 @@ export const fallbackPortfolioData = {
     },
     {
       title: "Klinik Billing System",
+      category: "internal",
+      featured: true,
+      cover: asset("images/clinic/Cuplikan layar 2026-03-15 194358.png"),
       eyebrow: "Full System",
       status: "Lokal Server",
       highlight: "Sistem klinik lengkap dengan tampilan yang siap ditinjau melalui galeri.",
