@@ -26,6 +26,7 @@ function App() {
   const gallery = useGallery({
     clinic: { title: "Klinik Billing System", images: portfolio.clinicShots ?? [] },
     fintrack: { title: "Fintrack", images: portfolio.fintrackShots ?? [] },
+    rahsa: { title: "Rahsa", images: portfolio.rahsaShots ?? [] },
   });
 
   useEffect(() => {

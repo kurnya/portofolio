@@ -255,6 +255,35 @@ export const fallbackPortfolioData = {
       ],
     },
     {
+      title: "Rahsa",
+      category: "desktop",
+      eyebrow: "Password Manager",
+      status: "Release Tersedia",
+      highlight: "Password manager lokal untuk Windows + Chrome dengan login satu klik.",
+      description:
+        "Rahsa adalah password manager lokal untuk Windows dan Chrome, dibangun dengan Tauri 2 (Rust + React) dan ekstensi Chrome Manifest V3. Vault dienkripsi dengan Argon2id + XChaCha20-Poly1305, mendukung banyak akun per situs, tombol Masuk yang otomatis mengisi dan login, ganti akun otomatis, generator password, backup terenkripsi, serta kunci otomatis. Password hanya diisi di alamat https yang terdaftar persis sehingga tahan phishing, tanpa server, cloud, maupun kode jaringan.",
+      impact: "Mempercepat login ke sistem dengan banyak akun per situs, misalnya web kampus atau kantor, tanpa menyimpan password di catatan atau Excel.",
+      tags: ["Rust", "Tauri", "React", "TypeScript", "Chrome Extension", "Kriptografi"],
+      links: [
+        {
+          label: "Download",
+          href: "https://github.com/kurnya/Rahsa/releases/latest",
+          variant: "primary",
+        },
+        {
+          label: "Source Code",
+          href: "https://github.com/kurnya/Rahsa",
+          variant: "secondary",
+        },
+      ],
+      secondaryAction: {
+        label: "Lihat Galeri",
+        action: "gallery",
+        gallerySet: "rahsa",
+        variant: "secondary",
+      },
+    },
+    {
       title: "Kyron - Auto Clicker",
       category: "desktop",
       eyebrow: "Desktop App",
@@ -335,6 +364,12 @@ export const fallbackPortfolioData = {
     asset("images/Fintrack/Fintrack (4).png"),
     asset("images/Fintrack/Fintrack (5).png"),
     asset("images/Fintrack/Fintrack (6).png"),
+  ],
+  rahsaShots: [
+    asset("images/Rahsa/main-dark.png"),
+    asset("images/Rahsa/main-light.png"),
+    asset("images/Rahsa/card-menu.png"),
+    asset("images/Rahsa/settings.png"),
   ],
   clinicShots: [
     asset("images/clinic/Cuplikan layar 2026-03-15 194358.png"),
