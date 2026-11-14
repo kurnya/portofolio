@@ -1,71 +1,86 @@
 const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 export const fallbackPortfolioData = {
+  site: { brand: "dimaskurniawan", tld: ".my.id", url: "https://dimaskurniawan.my.id" },
   navLinks: [
     { href: "#about", label: "Tentang" },
     { href: "#education", label: "Pendidikan" },
-    { href: "#skills", label: "Keahlian" },
     { href: "#projects", label: "Proyek" },
-    { href: "#certificates", label: "Sertifikat" },
+    { href: "#certificates", label: "Prestasi" },
     { href: "#contact", label: "Kontak" },
   ],
   profile: {
     name: "Dimas Kurniawan",
     headline:
-      "Mahasiswa Sistem Informasi yang membangun aplikasi web, desktop, automation, dan solusi internal dengan tampilan rapi serta alur kerja yang mudah dipakai.",
+      "Product Development Specialist di divisi Qara'a, PT Burnian Nitya Lavanya. Lulusan Sistem Informasi yang membangun aplikasi web, desktop, otomasi, dan solusi internal dengan tampilan rapi serta alur kerja yang mudah dipakai.",
     image: asset("images/profile/Profil-saya.jpg"),
-    badge: "Frontend + ML",
+    badge: "Product Dev · Qara'a",
     email: "dimasqpr23@gmail.com",
-    age: 23,
-    startYear: "2022",
+    work: {
+      role: "Product Development Specialist",
+      division: "Qara'a",
+      company: "PT Burnian Nitya Lavanya",
+      companyShort: "Burnian",
+      divisionLogo: asset("images/company/logo-qaraa.webp"),
+      companyLogo: asset("images/company/logo-burnian.webp"),
+    },
+    graduation: { date: "17 September 2026", gpa: "3,98" },
+    chips: [
+      { label: "React · Laravel", icon: "code", tone: "lime" },
+      { label: "Rust · Tauri", icon: "lock", tone: "violet" },
+      { label: "Otomasi", icon: "spark", tone: "lime" },
+      { label: "Mahasiswa Berprestasi 2025", icon: "star", tone: "solid" },
+    ],
     summary:
       "Saya tertarik pada pengembangan produk digital yang menyelesaikan kebutuhan nyata: mulai dari dashboard internal, aplikasi desktop, otomasi, sampai eksperimen Machine Learning.",
   },
   aboutItems: [
     {
-      title: "Fokus Saat Ini",
-      text: "Membangun aplikasi web dan desktop yang rapi, cepat dipahami, dan mudah dikembangkan untuk kebutuhan operasional maupun personal project.",
+      title: "Latar Belakang",
+      text: "Lulusan S1 Sistem Informasi Universitas Muhammadiyah Pontianak (2026) dengan IPK 3,98, terbiasa membangun aplikasi web, desktop, dan otomasi untuk kebutuhan operasional maupun proyek pribadi.",
     },
     {
       title: "Minat Karier",
-      text: "Tertarik pada Frontend Development, Laravel, automation, dan Machine Learning, terutama ketika teknologi bisa membantu pekerjaan sehari-hari jadi lebih terstruktur.",
+      text: "Frontend Development, Laravel, otomasi, dan Machine Learning, terutama ketika teknologi membantu pekerjaan sehari-hari jadi lebih terstruktur.",
     },
     {
       title: "Cara Kerja",
-      text: "Saya terbiasa memulai dari masalah pengguna, merapikan alur utama, lalu membuat tampilan dan fitur yang cukup jelas untuk dipakai tanpa banyak penjelasan.",
+      text: "Mulai dari masalah pengguna, merapikan alur utama, lalu membuat tampilan dan fitur yang cukup jelas untuk dipakai tanpa banyak penjelasan.",
     },
   ],
   educationItems: [
     {
       title: "Perguruan Tinggi",
-      years: "2022 - Sekarang",
+      years: "2022 – 2026",
+      status: "Lulus",
       program: "S1 Sistem Informasi",
       school: "Universitas Muhammadiyah Pontianak",
+      note: "Diwisuda 17 September 2026 · IPK 3,98",
     },
     {
       title: "Sekolah Menengah Kejuruan",
-      years: "2019 - 2021",
+      years: "2019 – 2021",
       program: "Teknik Pemesinan",
       school: "SMK SMTI Pontianak",
     },
     {
       title: "Sekolah Menengah Pertama",
-      years: "2017 - 2019",
+      years: "2017 – 2019",
       program: "SMP Negeri 1 Sungai Raya",
       school: "",
     },
     {
       title: "Sekolah Dasar",
-      years: "2010 - 2017",
+      years: "2010 – 2017",
       program: "SDN 58 Sungai Raya",
       school: "",
     },
   ],
   skills: [
-    { name: "Frontend", icon: "javascript", tools: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"] },
-    { name: "Backend", icon: "laravel", tools: ["Laravel", "PHP", "MySQL", "REST API"] },
-    { name: "Desktop App", icon: "python", tools: ["Python", "Tkinter", "Windows Release", "Automation"] },
-    { name: "Mobile & Experiment", icon: "flutter", tools: ["Flutter", "Machine Learning", "Data Processing"] },
+    { name: "Frontend", tools: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"] },
+    { name: "Backend", tools: ["Laravel", "PHP", "MySQL", "REST API"] },
+    { name: "Desktop App", tools: ["Python", "Tkinter", "Rust · Tauri", "Otomasi"] },
+    { name: "Mobile & ML", tools: ["Flutter", "Machine Learning", "Data Processing"] },
   ],
   projects: [
     {
@@ -74,7 +89,7 @@ export const fallbackPortfolioData = {
       featured: true,
       cover: asset("images/Fintrack/Fintrack (1).png"),
       eyebrow: "Sistem Internal",
-      status: "Lokal Server",
+      status: "Server Lokal",
       highlight: "Aplikasi internal untuk pencatatan uang keluar perusahaan secara terstruktur.",
       description:
         "Fintrack adalah aplikasi Laravel + TailwindCSS untuk pencatatan uang keluar perusahaan, histori transaksi, dan laporan kas keluar. Aplikasi ini berjalan di jaringan internal customer sehingga akses publik tidak tersedia.",
@@ -192,7 +207,7 @@ export const fallbackPortfolioData = {
       category: "automation",
       eyebrow: "Automation Internal",
       status: "Aktif",
-      highlight: "Bot WhatsApp untuk membackup foto bukti mutasi secara otomatis dan terstruktur.",
+      highlight: "Bot WhatsApp untuk mencadangkan foto bukti mutasi secara otomatis dan terstruktur.",
       description:
         "Bot internal untuk Tim Security PT Oscarmas Pontianak yang menerima foto bukti mutasi dari grup WhatsApp, mengonversinya ke format WebP, lalu menyimpannya secara otomatis ke Google Drive berdasarkan tahun, bulan, dan hari. Setiap backup juga dicatat ke Google Sheets lengkap dengan waktu, keterangan, dan tautan file.",
       impact: "Mengurangi pekerjaan backup manual dan membantu tim menemukan kembali bukti mutasi melalui penyimpanan serta pencatatan yang lebih teratur.",
@@ -257,6 +272,7 @@ export const fallbackPortfolioData = {
     {
       title: "Rahsa",
       category: "desktop",
+      featured: true,
       eyebrow: "Password Manager",
       status: "Release Tersedia",
       highlight: "Password manager lokal untuk Windows + Chrome dengan login satu klik.",
@@ -284,13 +300,13 @@ export const fallbackPortfolioData = {
       },
     },
     {
-      title: "Kyron - Auto Clicker",
+      title: "Kyron — Auto Clicker",
       category: "desktop",
       eyebrow: "Desktop App",
       status: "Release Tersedia",
-      highlight: "Aplikasi autoclicker desktop modern dengan rilis .exe yang siap dipakai.",
+      highlight: "Aplikasi auto clicker desktop modern dengan rilis .exe yang siap dipakai.",
       description:
-        "Kyron adalah aplikasi autoclicker desktop berbasis Python dengan antarmuka modern. Aplikasi ini memiliki manajemen script, randomizer klik, dan rilis Windows yang siap dipakai.",
+        "Kyron adalah aplikasi auto clicker desktop berbasis Python dengan antarmuka modern. Aplikasi ini memiliki manajemen script, randomizer klik, dan rilis Windows yang siap dipakai.",
       impact: "Membuat proses klik berulang lebih mudah dikontrol lewat script, randomizer, dan paket rilis Windows.",
       tags: ["Python", "Tkinter", "Desktop App", "Automation"],
       links: [
@@ -335,7 +351,7 @@ export const fallbackPortfolioData = {
       featured: true,
       cover: asset("images/clinic/Cuplikan layar 2026-03-15 194358.png"),
       eyebrow: "Full System",
-      status: "Lokal Server",
+      status: "Server Lokal",
       highlight: "Sistem klinik lengkap dengan tampilan yang siap ditinjau melalui galeri.",
       description:
         "Sistem informasi klinik untuk manajemen data pasien, rekam medis, dan billing. Fitur lengkapnya mendukung kebutuhan operasional klinik sehari-hari.",
@@ -392,7 +408,7 @@ export const fallbackPortfolioData = {
       title: "IPK Tertinggi Program Studi",
       issuer: "Sistem Informasi",
       year: "2024",
-      desc: "Peraih IPK tertinggi 3.95 Program Studi Sistem Informasi.",
+      desc: "Peraih IPK tertinggi 3,95 Program Studi Sistem Informasi.",
     },
     {
       src: asset("images/certificates/6.jpg"),
@@ -410,10 +426,10 @@ export const fallbackPortfolioData = {
     },
     {
       src: asset("images/certificates/2.jpg"),
-      title: "Students Exchange",
+      title: "Student Exchange",
       issuer: "i-CATS University College and UNIMAS",
       year: "2025",
-      desc: "Program students exchange ke i-CATS University College dan UNIMAS.",
+      desc: "Program student exchange ke i-CATS University College dan UNIMAS.",
     },
     {
       src: asset("images/certificates/3.jpg"),
@@ -435,24 +451,3 @@ export const fallbackPortfolioData = {
     { label: "WhatsApp", href: "https://wa.me/6289520786464", icon: "whatsapp" },
   ],
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

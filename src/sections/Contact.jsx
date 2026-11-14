@@ -1,30 +1,44 @@
-import Icon from "../components/Icon";
-import SectionHeading from "../components/SectionHeading";
+import Icon from "../components/Icons";
 
-export default function Contact({ email, links }) {
+export default function Contact({ site, profile, links }) {
   return (
-    <section id="contact" className="section panel panel-contact">
-      <SectionHeading eyebrow="Kontak" title="Mari Terhubung" />
-
-      <div className="contact-card">
-        <p>
-          Tertarik untuk berkolaborasi, diskusi project, atau sekadar menyapa? Saya
-          terbuka untuk peluang baru dan kerja sama yang relevan.
-        </p>
-        <a className="mail-link" href={`mailto:${email}`}>
-          {email}
-        </a>
-        <div className="contact-links">
+    <section id="contact" className="wrap">
+      <div className="contact" data-reveal="">
+        <div className="cube-wrap" aria-hidden="true">
+          <div className="cube">
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+        <span className="mono">05 — Kontak</span>
+        <h2 style={{ marginTop: 20 }}>Punya ide project? Ayo bangun bareng.</h2>
+        <div className="c-row">
+          <a className="cbtn" href={`mailto:${profile.email}`}>
+            <Icon name="mail" />
+            {profile.email}
+          </a>
           {links.map((link) => (
-            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-              <span className="icon-badge contact-icon">
-                <Icon name={link.icon} />
-              </span>
+            <a key={link.href} className="cbtn o" href={link.href} target="_blank" rel="noreferrer">
+              <Icon name={link.icon} />
               {link.label}
             </a>
           ))}
         </div>
       </div>
+
+      <footer className="foot">
+        <span className="mono">
+          © 2026 {profile.name} ·{" "}
+          <a href={site.url}>{site.url.replace(/^https?:\/\//, "")}</a>
+        </span>
+        <a className="mono" href="#top">
+          Kembali ke atas ↑
+        </a>
+      </footer>
     </section>
   );
 }
